@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>LiveTime Demo</title>
+		<meta charset="utf-8">
+		<!--[if lt IE 9]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="../js/livetime.min.js"></script>
+	</head>
+	<body>
+		<a href="#add-time">Add a LiveTime</a>
+		<ul id="test-times">
+		    <li><time class="test-livetime" datetime="1986-09-24T14:20:00.000Z"></time></li>
+			<li><time class="test-livetime" datetime="2014-05-27"></time></li>
+			<li><time class="test-livetime" datetime="2014-05-27T20:00"></time></li>
+			<li><time class="test-livetime" datetime="2014-05-27T20:00:00"></time></li>
+			<li><time class="test-livetime" datetime="2014-05-27T20:00:00.000"></time></li>
+		    <li><time class="test-livetime" datetime="05/27/2014 8:00 pm"></time></li>
+		    <li><time class="test-livetime" datetime="05/27/2014 20:00:00"></time></li>
+		</ul>
+		<script>
+		    $( '.test-livetime' ).livetime();
+
+			$( 'a[href="#add-time"]' ).on( 'click',
+				function( e ) {
+					e.preventDefault();
+
+					var datNow = new Date(),
+					jqoNewLi = $( '<li/>' ),
+					jqoNewTime = $( '<time datetime="' + datNow.toISOString() + '"/>' );
+
+					$( '#test-times' ).append( jqoNewLi.append( jqoNewTime ) );
+
+					jqoNewTime.livetime();
+				}
+			);
+		</script>
+	</body>
+</html>
